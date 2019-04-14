@@ -15,16 +15,16 @@ void setup() {
   display.setContrast(30);
 
   //Initialize text display
-  display.setTextSize(1);
+  display.setTextSize(2);
   display.setTextColor(BLACK);
 }
 
 void loop() {
   uint32_t i;
   //Make it count down from 100
-  for(i = 10; i >= 0; i--){
+  for(i = 10; i > 0; i--){
       display.clearDisplay();
-      display.setCursor(0,0);
+      display.setCursor(30,17);
       display.print(i);
       display.display();
       delay(1000);
