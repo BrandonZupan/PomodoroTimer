@@ -26,6 +26,7 @@ void loop() {
   while(1){
     for(i = 65; i > 0; i--){
       out = secondToMinute(i);
+      display.setCursor(20, 14);
       display.print(out);
       display.display();
       delay(1000);
