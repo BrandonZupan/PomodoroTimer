@@ -1,10 +1,3 @@
-
-#define RST 6
-#define CS  7
-#define DC  5
-#define DIN 11
-#define CLK 13
-
 #include <SPI.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_PCD8544.h>
