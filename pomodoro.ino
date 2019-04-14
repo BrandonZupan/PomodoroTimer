@@ -12,7 +12,7 @@ void setup() {
   display.begin();
 
   //Set contrast
-  display.setContrast(50);
+  display.setContrast(40);
 
   //Initialize text display
   display.setTextSize(1);
@@ -23,8 +23,10 @@ void loop() {
   uint32_t i;
   //Make it count down from 100
   for(i = 10; i >= 0; i--){
+      display.clearDisplay();
       display.setCursor(0,0);
       display.print(i);
-      delay(100);
+      display.display();
+      delay(1000);
   }
 }
