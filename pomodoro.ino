@@ -21,7 +21,7 @@ void setup() {
 
 void loop() {
   uint32_t i;
-  //Make it count down from 100
+  //Make it count down from 
   for(i = 10; i > 0; i--){
       display.clearDisplay();
       display.setCursor(30,17);
@@ -29,4 +29,24 @@ void loop() {
       display.display();
       delay(1000);
   }
+}
+
+//Convert a time in seconds into minutes and seconds
+String secondToMinute(uint32_t seconds){
+  String outString = "**:**";
+  uint8_t minutes;
+  String minString = "**";
+  uint8_t remSecs;
+  String secString = "**";
+  //divide by 60 to get minutes
+  minutes = seconds / 60;
+  remSecs = seconds % 60;
+
+  //Put this into the string
+  minString = String(minutes);
+  secString = String(remSecs);
+
+  outString = minString + ':' + secString;
+  
+  return (outString);
 }
