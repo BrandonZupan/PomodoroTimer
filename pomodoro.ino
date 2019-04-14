@@ -9,28 +9,29 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_PCD8544.h>
 
+//Define display object
+Adafruit_PCD8544 display = Adafruit_PCD8544(7, 6, 5, 4, 3);
+
 void setup() {
-  // put your setup code here, to run once:
-  pinMode(RST, OUTPUT);
-  pinMode(CS, OUTPUT);
-  pinMode(DC, OUTPUT);
-  pinMode(DIN, OUTPUT);
-  pinMode(CLK, OUTPUT);
+  Serial.begin(9600);
 
-  pinMode(LED_BUILTIN, OUTPUT);
+  //Init display
+  display.begin();
 
-  digitalWrite(RST, HIGH);
-  digitalWrite(CS, HIGH);
-  digitalWrite(DC, HIGH);
-  digitalWrite(DIN, HIGH);
-  digitalWrite(CLK, HIGH);
+  //Set contrast
+  display.setContrast(50);
+
+  //Initialize text display
+  display.setTextSize(1);
+  display.setTextColor(BLACK);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
-  delay(1000);                       // wait for a second
-  digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
-  delay(1000);                       // wait for a second
-
+  uint32_t i;
+  //Make it count down from 100
+  for(i = 10; i >= 0; i--){
+      display.setCursor(0,0);
+      display.print(i);
+      delay(100);
+  }
 }
