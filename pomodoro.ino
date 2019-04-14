@@ -10,6 +10,7 @@ void setup() {
 
   //Init display
   display.begin();
+  display.clearDisplay();
 
   //Set contrast
   display.setContrast(30);
@@ -21,13 +22,15 @@ void setup() {
 
 void loop() {
   uint32_t i;
-  //Make it count down from 
-  for(i = 10; i > 0; i--){
-      display.clearDisplay();
-      display.setCursor(30,17);
-      display.print(i);
+  String out = "**:**";
+  while(1){
+    for(i = 65; i > 0; i--){
+      out = secondToMinute(i);
+      display.print(out);
       display.display();
       delay(1000);
+      display.clearDisplay();
+    }
   }
 }
 
@@ -38,6 +41,8 @@ String secondToMinute(uint32_t seconds){
   String minString = "**";
   uint8_t remSecs;
   String secString = "**";
+
+  static uint8_t secFlag = 0x01;
   //divide by 60 to get minutes
   minutes = seconds / 60;
   remSecs = seconds % 60;
@@ -46,7 +51,13 @@ String secondToMinute(uint32_t seconds){
   minString = String(minutes);
   secString = String(remSecs);
 
-  outString = minString + ':' + secString;
-  
+  if(secFlag == 0x01){
+    outString = minString + ':' + secString;
+    secFlag = 0x00;
+  }
+  else{
+    outString = minString + ' ' + secString;
+    secFlag = 0x01;
+  }
   return (outString);
 }
