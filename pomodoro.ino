@@ -12,7 +12,7 @@ void setup() {
   display.begin();
 
   //Set contrast
-  display.setContrast(40);
+  display.setContrast(30);
 
   //Initialize text display
   display.setTextSize(1);
